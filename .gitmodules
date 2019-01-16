@@ -1,0 +1,12 @@
+[submodule "ContactManager"]
+	path = ContactManager
+	url = https://github.com/aosante/ContactManager.git
+[submodule "Client"]
+	path = Client
+	url = https://github.com/aosante/Client
+[submodule "client-side"]
+	path = client-side
+	url = https://github.com/aosante/Client
+[submodule "client"]
+	path = client
+	url = https://github.com/Client

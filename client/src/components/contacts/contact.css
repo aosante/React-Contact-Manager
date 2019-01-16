@@ -1,0 +1,58 @@
+.fa-address-card:hover,
+.fa-edit:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.fa-trash:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+  color: red;
+  cursor: pointer;
+}
+
+@media (min-width: 320px) {
+  h4 {
+    font-size: calc(5px + 6 * ((350vw - 320px) / 980));
+  }
+}
+@media (min-width: 1100px) {
+  h4 {
+    font-size: 2em;
+  }
+}
+.contact--info li {
+  background-color: #eaeaea;
+  box-shadow: 0 0 3px 0 rgb(92, 92, 92);
+  margin-bottom: 1.2em;
+}
+
+.contact--info li:last-of-type {
+  margin-bottom: 0;
+}
+
+.contact--info a {
+  text-decoration: none;
+  color: #000;
+  margin-left: -2em;
+}
+
+.contact--info li strong {
+  margin-right: 1em;
+  font-weight: 800;
+  font-size: 1.2em;
+  color: #3f3f3f;
+}
+@media (max-width: 860px) {
+  .contact--info li {
+    padding: 0;
+    font-size: 0.3em;
+  }
+
+  .contact--info li strong {
+    font-size: 0.6em;
+  }
+}
+
+/*jeje xd*/
