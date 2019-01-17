@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import './addContact.css';
 import { Consumer } from '../../context';
 import InputGroup from '../layout/InputGroup';
-//npm package that generates random id's on the fly
 import swal from 'sweetalert';
 import axios from 'axios';
 
 class EditContact extends Component {
   state = {
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     errors: {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: ''
     }
@@ -23,7 +24,8 @@ class EditContact extends Component {
     const res = await axios.get(`/contacts/edit/${id}`);
     const contact = res.data.data[0];
     this.setState({
-      name: contact.name,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
       email: contact.email,
       phone: contact.phone
     });
@@ -50,8 +52,12 @@ class EditContact extends Component {
     );
     // console.log(this.state);
     switch (name) {
-      case 'name':
-        errors.name =
+      case 'firstName':
+        errors.firstName =
+          value.length < 3 ? 'A minimum of 3 characters is required...' : '';
+        break;
+      case 'lastName':
+        errors.lastName =
           value.length < 3 ? 'A minimum of 3 characters is required...' : '';
         break;
       case 'email':
@@ -74,11 +80,13 @@ class EditContact extends Component {
   clearInputs = e => {
     e.preventDefault();
     this.setState({
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
       errors: {
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: ''
       }
@@ -87,24 +95,25 @@ class EditContact extends Component {
 
   addContact = async (dispatch, e) => {
     e.preventDefault();
-    const { name, email, phone } = this.state;
+    const { firstName, lastName, email, phone } = this.state;
     //validation
     if (this.validateForm(this.state)) {
       const { id } = this.props.match.params;
-      const updatedContact = { name, email, phone };
+      const updatedContact = { firstName, lastName, email, phone };
       //this put requests needs to be similar to the post request in add
       const res = await axios.put(
-        `/contacts/update/${id}?name=${name}&email=${email}&phone=${phone}`,
+        `/contacts/update/${id}?firstName=${firstName}&lastName=${lastName}&email=${email}&phone=${phone}`,
         updatedContact
       );
 
       dispatch({ type: 'UPDATE_CONTACT', payload: res.data });
 
       this.setState({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
-        errors: { name: '', email: '', phone: '' }
+        errors: { firstName: '', lastName: '', email: '', phone: '' }
       });
       swal({
         title: 'Success!',
@@ -123,7 +132,7 @@ class EditContact extends Component {
   };
 
   render() {
-    const { name, email, phone, errors } = this.state;
+    const { firstName, lastName, email, phone, errors } = this.state;
     return (
       <Consumer>
         {value => {
@@ -135,17 +144,32 @@ class EditContact extends Component {
               </div>
               <form onSubmit={this.addContact.bind(this, dispatch)}>
                 <InputGroup
-                  label="Name"
-                  value={name}
-                  placeholder="Enter name..."
-                  name="name"
+                  label="First Name"
+                  value={firstName}
+                  placeholder="Enter first name..."
+                  name="firstName"
                   onChange={this.handleInputChange}
                   error={
-                    errors.name.length > 0 && (
-                      <p className="invalid">{errors.name}</p>
+                    errors.firstName.length > 0 && (
+                      <p className="invalid">{errors.firstName}</p>
                     )
                   }
-                  className={errors.name.length > 0 ? 'error-border' : null}
+                  className={
+                    errors.firstName.length > 0 ? 'error-border' : null
+                  }
+                />
+                <InputGroup
+                  label="Last Name"
+                  value={lastName}
+                  placeholder="Enter last name..."
+                  name="lastName"
+                  onChange={this.handleInputChange}
+                  error={
+                    errors.lastName.length > 0 && (
+                      <p className="invalid">{errors.lastName}</p>
+                    )
+                  }
+                  className={errors.lastName.length > 0 ? 'error-border' : null}
                 />
                 <InputGroup
                   type="email"

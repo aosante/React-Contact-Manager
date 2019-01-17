@@ -19,15 +19,15 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(cors());
 
-const SELECT_ALL_CONTACTS = `SELECT * FROM contacts ORDER BY name ASC`;
+const SELECT_ALL_CONTACTS = `SELECT * FROM contacts ORDER BY firstName ASC`;
 
 //Connection creation to mysql database
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
+  host: 'us-cdbr-iron-east-01.cleardb.net',
+  user: 'b540407049090c',
   port: '3306',
-  password: 'newpass',
-  database: 'contacts_sql',
+  password: '1f41ab2e',
+  database: 'heroku_cdf7d751774d818',
   insecureAuth: true
 });
 
@@ -65,8 +65,8 @@ app.get('/contacts', (req, res) => {
 });
 
 app.post('/contacts/add', (req, res) => {
-  const { name, email, phone } = req.query;
-  const INSERT_CONTACT = `INSERT INTO contacts (name, email, phone) VALUES ('${name}', '${email}', '${phone}')`;
+  const { firstName, lastName, email, phone } = req.query;
+  const INSERT_CONTACT = `INSERT INTO contacts (firstName, lastName, email, phone) VALUES ('${firstName}', '${lastName}', '${email}', '${phone}')`;
   connection.query(INSERT_CONTACT, (err, results) => {
     if (err) {
       console.log(err);
@@ -104,8 +104,8 @@ app.get('/contacts/edit/:id', (req, res) => {
 
 app.put('/contacts/update/:id', (req, res) => {
   const { id } = req.params;
-  const { name, email, phone } = req.query;
-  const UPDATE_CONTACT = `UPDATE contacts SET name = '${name}', email = '${email}', phone = '${phone}' WHERE id = ${id}`;
+  const { firstName, lastName, email, phone } = req.query;
+  const UPDATE_CONTACT = `UPDATE contacts SET firstName = '${firstName}', lastName = '${lastName}', email = '${email}', phone = '${phone}' WHERE id = ${id}`;
   connection.query(UPDATE_CONTACT, (err, results) => {
     if (err) {
       console.log(err);

@@ -49,6 +49,7 @@ export class Provider extends Component {
 
   getContacts = async _ => {
     const res = await axios.get('/contacts');
+    console.log(res);
     this.setState({ contacts: res.data.data });
   };
 

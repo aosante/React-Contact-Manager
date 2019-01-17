@@ -46,7 +46,7 @@ class Contact extends Component {
   };
 
   render() {
-    const { id, name, email, phone } = this.props.contact;
+    const { id, firstName, lastName, email, phone } = this.props.contact;
     const { showInfo } = this.state;
     return (
       <Consumer>
@@ -55,7 +55,7 @@ class Contact extends Component {
           return (
             <div style={card}>
               <h4 style={nameStyle}>
-                {name}{' '}
+                {firstName} {lastName}
                 <i
                   style={{
                     position: 'relative',
