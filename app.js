@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
   app.get('*', (req, res) => {
-    res.sendfile(path.join((__dirname = 'client/build/index.html')));
+    res.sendfile(path.join((__dirname, 'client/build', 'index.html')));
   });
 }
 
@@ -117,6 +117,6 @@ app.put('/contacts/update/:id', (req, res) => {
 
 //this goes in the end after all the requests
 //build mode
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/public/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/client/public/index.html'));
+// });
