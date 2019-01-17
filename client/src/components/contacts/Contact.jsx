@@ -29,7 +29,7 @@ class Contact extends Component {
       if (willDelete) {
         //este try catch tengo que cambiarlo una vez que haya conectado la base de datos
         try {
-          await axios.delete(`/contacts/delete/${id}`);
+          await axios.delete(`/api/contacts/delete/${id}`);
           dispatch({ type: 'DELETE_CONTACT', payload: id });
         } catch (e) {
           console.log(e);

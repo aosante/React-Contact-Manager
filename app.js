@@ -40,7 +40,7 @@ app.listen(port, () => {
   console.log('Server started on port ' + port);
 });
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   connection.query(SELECT_ALL_CONTACTS, (err, results) => {
     if (err) {
       res.send(err);
@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/contacts', (req, res) => {
+app.get('/api/contacts', (req, res) => {
   connection.query(SELECT_ALL_CONTACTS, (err, results) => {
     if (err) {
       res.send(err);
@@ -64,7 +64,7 @@ app.get('/contacts', (req, res) => {
   });
 });
 
-app.post('/contacts/add', (req, res) => {
+app.post('/api/contacts/add', (req, res) => {
   const { firstName, lastName, email, phone } = req.query;
   const INSERT_CONTACT = `INSERT INTO contacts (firstName, lastName, email, phone) VALUES ('${firstName}', '${lastName}', '${email}', '${phone}')`;
   connection.query(INSERT_CONTACT, (err, results) => {
@@ -76,7 +76,7 @@ app.post('/contacts/add', (req, res) => {
   });
 });
 
-app.delete('/contacts/delete/:id', (req, res) => {
+app.delete('/api/contacts/delete/:id', (req, res) => {
   const { id } = req.params;
   const DELETE_CONTACT = `DELETE FROM contacts WHERE id = ${id}`;
   connection.query(DELETE_CONTACT, (err, results) => {
@@ -88,7 +88,7 @@ app.delete('/contacts/delete/:id', (req, res) => {
   });
 });
 
-app.get('/contacts/edit/:id', (req, res) => {
+app.get('/api/contacts/edit/:id', (req, res) => {
   const { id } = req.params;
   const GET_CONTACT = `SELECT * FROM contacts WHERE id = ${id}`;
   connection.query(GET_CONTACT, (err, results) => {
@@ -102,7 +102,7 @@ app.get('/contacts/edit/:id', (req, res) => {
   });
 });
 
-app.put('/contacts/update/:id', (req, res) => {
+app.put('/api/contacts/update/:id', (req, res) => {
   const { id } = req.params;
   const { firstName, lastName, email, phone } = req.query;
   const UPDATE_CONTACT = `UPDATE contacts SET firstName = '${firstName}', lastName = '${lastName}', email = '${email}', phone = '${phone}' WHERE id = ${id}`;
@@ -117,6 +117,6 @@ app.put('/contacts/update/:id', (req, res) => {
 
 //this goes in the end after all the requests
 //build mode
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/client/public/index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/public/index.html'));
+});

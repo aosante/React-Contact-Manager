@@ -21,7 +21,7 @@ class EditContact extends Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const res = await axios.get(`/contacts/edit/${id}`);
+    const res = await axios.get(`/api/contacts/edit/${id}`);
     const contact = res.data.data[0];
     this.setState({
       firstName: contact.firstName,
@@ -102,7 +102,7 @@ class EditContact extends Component {
       const updatedContact = { firstName, lastName, email, phone };
       //this put requests needs to be similar to the post request in add
       const res = await axios.put(
-        `/contacts/update/${id}?firstName=${firstName}&lastName=${lastName}&email=${email}&phone=${phone}`,
+        `/api/contacts/update/${id}?firstName=${firstName}&lastName=${lastName}&email=${email}&phone=${phone}`,
         updatedContact
       );
 

@@ -88,7 +88,7 @@ class AddContact extends Component {
     if (this.validateForm(this.state)) {
       const newContact = { firstName, lastName, email, phone };
       await axios.post(
-        `/contacts/add?firstName=${firstName}&lastName=${lastName}&email=${email}&phone=${phone}`,
+        `/api/contacts/add?firstName=${firstName}&lastName=${lastName}&email=${email}&phone=${phone}`,
         newContact
       );
       dispatch({ type: 'ADD_CONTACT', payload: newContact });
