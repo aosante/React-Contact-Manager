@@ -79,11 +79,10 @@ const Header = props => {
                 About
               </NavLink>
             </li>
-            <li>
-              <div style={{ color: 'white', cursor: 'pointer' }} onClick={test}>
-                test
-              </div>
-            </li>
+            <div onClick={test} style={{ color: 'white' }}>
+              Test
+            </div>
+            <li />
           </ul>
         </div>
       </nav>
