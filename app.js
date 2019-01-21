@@ -40,17 +40,17 @@ app.listen(port, () => {
   console.log('Server started on port ' + port);
 });
 
-app.get('/api', (req, res) => {
-  connection.query(SELECT_ALL_CONTACTS, (err, results) => {
-    if (err) {
-      res.send(err);
-    } else {
-      return res.json({
-        data: results
-      });
-    }
-  });
-});
+// app.get('/api', (req, res) => {
+//   connection.query(SELECT_ALL_CONTACTS, (err, results) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       return res.json({
+//         data: results
+//       });
+//     }
+//   });
+// });
 
 app.get('/api/contacts', (req, res) => {
   connection.query(SELECT_ALL_CONTACTS, (err, results) => {
