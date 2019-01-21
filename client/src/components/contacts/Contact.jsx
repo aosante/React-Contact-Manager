@@ -18,6 +18,10 @@ class Contact extends Component {
     });
   };
 
+  test = _ => {
+    axios.get('/test').then(res => console.log(res.data));
+  };
+
   deleteContact = (id, dispatch) => {
     swal({
       title: 'Are you sure?',
@@ -73,6 +77,7 @@ class Contact extends Component {
                 <NavLink to={`contact/edit/${id}`}>
                   <i className="fa fa-edit" style={editIcon} />
                 </NavLink>
+                <div onClick={this.test}>test</div>
               </h4>
               {showInfo ? (
                 <ul style={listStyle} className="contact--info">

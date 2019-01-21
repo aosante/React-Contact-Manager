@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
   app.get('*', (req, res) => {
-    res.sendfile(path.join((__dirname, 'client/build', 'index.html')));
+    res.sendFile(path.join((__dirname, 'client/build', 'index.html')));
   });
 }
 
@@ -40,17 +40,21 @@ app.listen(port, () => {
   console.log('Server started on port ' + port);
 });
 
-// app.get('/api', (req, res) => {
-//   connection.query(SELECT_ALL_CONTACTS, (err, results) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       return res.json({
-//         data: results
-//       });
-//     }
-//   });
-// });
+app.get('/test', (req, res) => {
+  res.send('hello');
+});
+
+app.get('/api', (req, res) => {
+  connection.query(SELECT_ALL_CONTACTS, (err, results) => {
+    if (err) {
+      res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+});
 
 app.get('/api/contacts', (req, res) => {
   connection.query(SELECT_ALL_CONTACTS, (err, results) => {
