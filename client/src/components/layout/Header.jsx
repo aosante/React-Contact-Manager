@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './header.css';
+import axios from 'axios';
 
 const Header = props => {
   const navToggle = () => {
@@ -9,6 +10,10 @@ const Header = props => {
     nav.classList.toggle('site--nav--open');
     const menu = document.querySelector('.menu-toggle');
     menu.classList.toggle('open');
+  };
+
+  const test = _ => {
+    axios.get('/test').then(res => console.log(res.data));
   };
   const { branding } = props;
   return (
@@ -73,6 +78,11 @@ const Header = props => {
                 />
                 About
               </NavLink>
+            </li>
+            <li>
+              <div style={{ color: 'white', cursor: 'pointer' }} onClick={test}>
+                test
+              </div>
             </li>
           </ul>
         </div>
