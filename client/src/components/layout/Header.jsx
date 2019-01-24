@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './header.css';
-import axios from 'axios';
 
 const Header = props => {
   const navToggle = () => {
@@ -12,9 +11,6 @@ const Header = props => {
     menu.classList.toggle('open');
   };
 
-  const test = _ => {
-    axios.get('/test').then(res => console.log(res.data));
-  };
   const { branding } = props;
   return (
     <React.Fragment>
@@ -79,10 +75,6 @@ const Header = props => {
                 About
               </NavLink>
             </li>
-            <div onClick={test} style={{ color: 'white' }}>
-              Test
-            </div>
-            <li />
           </ul>
         </div>
       </nav>

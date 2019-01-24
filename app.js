@@ -9,14 +9,6 @@ const app = express();
 //Static file declaration
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-//production mode
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join((__dirname, 'client/build', 'index.html')));
-  });
-}
-
 app.use(cors());
 
 const SELECT_ALL_CONTACTS = `SELECT * FROM contacts ORDER BY firstName ASC`;
@@ -38,10 +30,6 @@ connection.connect(err => {
 //Server start
 app.listen(port, () => {
   console.log('Server started on port ' + port);
-});
-
-app.get('/test', (req, res) => {
-  res.send('hello');
 });
 
 app.get('/api', (req, res) => {
@@ -118,6 +106,14 @@ app.put('/api/contacts/update/:id', (req, res) => {
     }
   });
 });
+
+//production mode
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join((__dirname, 'client/build', 'index.html')));
+  });
+}
 
 //this goes in the end after all the requests
 //build mode
