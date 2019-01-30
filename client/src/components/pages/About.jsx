@@ -1,7 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
-const About = props => {
+const About = () => {
   return (
     <div
       style={{

@@ -83,6 +83,9 @@ input {
 }
 
 @media (max-width: 680px) {
+  .container {
+    width: 80%;
+  }
   .buttons {
     display: flex;
     flex-direction: column;
