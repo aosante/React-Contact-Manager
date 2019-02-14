@@ -104,7 +104,7 @@ class AddContact extends Component {
         text: 'Contact has been added',
         icon: 'success'
       })
-        .then(() => this.props.history.push('/'))
+        .then(() => this.props.history.push('/contacts'))
         .then(() => window.location.reload());
     } else {
       swal({

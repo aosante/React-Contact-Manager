@@ -78,8 +78,9 @@ class Contact extends Component {
                 <ul style={listStyle} className="contact--info">
                   <li style={listItems}>
                     <strong>Email:</strong>
-                    <a style={listItems} href={`mailto:${email}`}>
-                      {email}
+                    {email}
+                    <a style={emailButton} href={`mailto:${email}`}>
+                      Send Email
                     </a>
                   </li>
                   <li style={listItems}>
@@ -105,7 +106,6 @@ const card = {
 };
 
 const nameStyle = {
-  // fontSize: '2em',
   padding: '.4em 0',
   paddingLeft: '1em',
   margin: '0',
@@ -135,6 +135,15 @@ const editIcon = {
   marginRight: '.5em',
   marginTop: '.1em',
   color: '#000'
+};
+
+const emailButton = {
+  padding: '.3em',
+  color: '#fff',
+  backgroundColor: 'rgb(127, 216, 247)',
+  float: 'right',
+  transform: 'translateY(-3px)',
+  borderRadius: '3px'
 };
 
 Contact.propTypes = {
