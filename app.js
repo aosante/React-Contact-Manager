@@ -13,6 +13,7 @@ app.use(cors());
 
 const SELECT_ALL_CONTACTS = `SELECT * FROM contacts ORDER BY firstName ASC`;
 
+//get and create database connection
 function getConnection() {
   return mysql.createConnection({
     host: 'us-cdbr-iron-east-01.cleardb.net',
@@ -29,7 +30,25 @@ app.listen(port, () => {
   console.log('Server started on port ' + port);
 });
 
-// server.keepAliveTimeout = 0;
+app.get('/api', (req, res) => {
+  const connection = getConnection();
+  connection.connect(err => {
+    if (err) console.log(err);
+    return;
+  });
+  connection.query(SELECT_ALL_CONTACTS, (err, results) => {
+    if (err) {
+      res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+  connection.end();
+});
+
+//----------------------------//
 
 app.get('/api/contacts', (req, res) => {
   const connection = getConnection();
