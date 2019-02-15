@@ -50,8 +50,6 @@ app.get('/api', (req, res) => {
   connection.end();
 });
 
-//----------------------------//
-
 app.get('/api/contacts', (req, res) => {
   const connection = getConnection();
   connection.connect(err => {
