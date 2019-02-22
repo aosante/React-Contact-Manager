@@ -6,8 +6,6 @@ const path = require('path');
 const port = process.env.PORT || 4000;
 const app = express();
 
-console.log(path.join(__dirname, 'client/build', 'index.html'));
-
 //Static file declaration
 app.use(express.static(path.join(__dirname, 'client/build')));
 

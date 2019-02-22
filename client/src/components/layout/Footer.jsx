@@ -1,23 +1,26 @@
 import React from 'react';
 import './footer.css';
 
-const Footer = props => {
+const Footer = _ => {
   return (
     <div className="footer">
       <div className="social-links">
         <ul>
           <li>
-            <a>
+            <a href="http://www.github.com/aosante" target="_blank">
               <i className="fa fa-github" />
             </a>
           </li>
           <li>
-            <a>
+            <a
+              href="https://www.linkedin.com/in/andr%C3%A9s-osante-alfaro-845701ba/"
+              target="_blank"
+            >
               <i className="fa fa-linkedin" />
             </a>
           </li>
           <li>
-            <a>
+            <a href="https://www.instagram.com/aosanaa/?hl=en" target="_blank">
               <i className="fa fa-instagram" />
             </a>
           </li>

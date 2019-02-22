@@ -24,5 +24,4 @@ body,
   overflow: hidden;
   display: block;
   position: relative;
-  z-index: -1;
 }

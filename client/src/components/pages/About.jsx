@@ -8,7 +8,10 @@ const About = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        height: '30vh'
+        height: '30vh',
+        width: '90%',
+        margin: '0 auto',
+        textAlign: 'center'
       }}
     >
       <h1>
