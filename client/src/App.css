@@ -9,4 +9,20 @@ body {
   padding: 0;
   font-family: 'Raleway', sans-serif;
   background-color: rgb(245, 241, 230);
+  height: 100%;
+}
+
+html,
+body,
+.App,
+#root {
+  height: 100%;
+}
+
+.content {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  z-index: -1;
 }
