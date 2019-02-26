@@ -1,6 +1,6 @@
 import React from 'react';
 
-const About = () => {
+const About = _ => {
   return (
     <div
       style={{
@@ -22,26 +22,43 @@ const About = () => {
       <p>Coded by Andrés Osante</p>
       <p>Version 1.0.0</p>
       <a
-        style={{ fontSize: '1.15em', textDecoration: 'none', color: 'purple' }}
+        style={{
+          fontSize: '1.15em',
+          textDecoration: 'none',
+          color: '#000',
+          textDecoration: 'underline'
+        }}
         href="https://github.com/aosante"
         target="_blank"
         rel="noopener noreferrer"
       >
+        <i
+          className="fa fa-github"
+          style={{ marginRight: '.35em', color: 'rgb(127, 216, 247)' }}
+        />
         Github
       </a>
       <br />
+
       <a
-        style={{ fontSize: '1.15em', textDecoration: 'none', color: 'purple' }}
+        style={{
+          fontSize: '1.15em',
+          textDecoration: 'none',
+          color: '#000',
+          textDecoration: 'underline'
+        }}
         href="https://linkedin.com/aosante"
         target="_blank"
         rel="noopener noreferrer"
       >
+        <i
+          className="fa fa-linkedin"
+          style={{ marginRight: '.35em', color: 'rgb(127, 216, 247)' }}
+        />
         LinkedIn
       </a>
     </div>
   );
 };
-
-// About.propTypes = {};
 
 export default About;

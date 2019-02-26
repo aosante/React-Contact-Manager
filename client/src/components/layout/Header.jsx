@@ -4,11 +4,26 @@ import { NavLink } from 'react-router-dom';
 import './header.css';
 
 const Header = props => {
-  const navToggle = () => {
+  const navToggle = _ => {
     const nav = document.querySelector('.site--nav');
     nav.classList.toggle('site--nav--open');
     const menu = document.querySelector('.menu-toggle');
     menu.classList.toggle('open');
+  };
+
+  const removeMobileNav = _ => {
+    const nav = document.querySelector('.site--nav');
+    const menu = document.querySelector('.menu-toggle');
+    const windowWidth = window.innerWidth;
+    const links = document.querySelectorAll('.link');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        if (windowWidth < 770) {
+          nav.classList.remove('site--nav--open');
+          menu.classList.remove('open');
+        }
+      });
+    });
   };
 
   const { branding } = props;
@@ -39,6 +54,7 @@ const Header = props => {
                 to="/contacts"
                 style={linkStyles}
                 activeStyle={{ color: 'rgb(127, 216, 247)' }}
+                onClick={removeMobileNav}
               >
                 <i
                   className="fa fa-users"
@@ -53,6 +69,7 @@ const Header = props => {
                 to="/contact/add"
                 style={linkStyles}
                 activeStyle={{ color: 'rgb(127, 216, 247)' }}
+                onClick={removeMobileNav}
               >
                 <i
                   className="fa fa-user-plus"
@@ -67,6 +84,7 @@ const Header = props => {
                 to="/about"
                 style={linkStyles}
                 activeStyle={{ color: 'rgb(127, 216, 247)' }}
+                onClick={removeMobileNav}
               >
                 <i
                   className="fa fa-info-circle"
@@ -89,7 +107,8 @@ const navStyle = {
   backgroundColor: 'rgb(32, 35, 41)',
   height: '10.5vh',
   display: 'grid',
-  gridTemplateColumns: '2fr 4fr'
+  gridTemplateColumns: '2fr 4fr',
+  alignContent: 'center'
 };
 
 const brandStyle = {

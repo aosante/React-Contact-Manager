@@ -76,10 +76,14 @@ class Contact extends Component {
               </h4>
               {showInfo ? (
                 <ul style={listStyle} className="contact--info">
-                  <li style={listItems}>
+                  <li className="email" style={listItems}>
                     <strong>Email:</strong>
                     {email}
-                    <a style={emailButton} href={`mailto:${email}`}>
+                    <a
+                      id="email-btn"
+                      style={emailButton}
+                      href={`mailto:${email}`}
+                    >
                       Send Email
                     </a>
                   </li>
@@ -116,12 +120,12 @@ const nameStyle = {
 const listStyle = {
   border: '2px solid #eee',
   margin: '1em 2em',
-  padding: '1em 2em',
+  padding: '1em',
   listStyleType: 'none'
 };
 
 const listItems = {
-  padding: '.4em 1em',
+  padding: '.4em .5em',
   border: '1px solid #eee'
 };
 

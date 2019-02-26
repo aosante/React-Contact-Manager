@@ -55,4 +55,9 @@
   }
 }
 
-/*jeje xd*/
+@media (max-width: 490px) {
+  #email-btn {
+    width: 30%;
+    font-size: 8px !important;
+  }
+}
