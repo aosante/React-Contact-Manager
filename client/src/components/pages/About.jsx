@@ -47,7 +47,7 @@ const About = _ => {
           color: '#000',
           textDecoration: 'underline'
         }}
-        href="https://linkedin.com/aosante"
+        href="https://www.linkedin.com/in/andr%C3%A9s-osante-alfaro-845701ba/"
         target="_blank"
         rel="noopener noreferrer"
       >
